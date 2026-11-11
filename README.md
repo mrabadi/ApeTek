@@ -13,7 +13,7 @@ The 100% math size now equals 75% in version 1.2. Saved size choices migrate to 
 For the Ubuntu package, run from the directory containing the download:
 
 ```sh
-sudo apt install ./apetek_1.3.4_amd64.deb
+sudo apt install ./apetek_1.3.5_amd64.deb
 apetek
 ```
 
@@ -24,8 +24,8 @@ Installing this package replaces the earlier Markdown Local package. Your Markdo
 For the portable archive:
 
 ```sh
-tar -xzf apetek-1.3.4-linux-x64.tar.gz
-cd apetek-1.3.4-linux-x64
+tar -xzf apetek-1.3.5-linux-x64.tar.gz
+cd apetek-1.3.5-linux-x64
 ./apetek
 ```
 
