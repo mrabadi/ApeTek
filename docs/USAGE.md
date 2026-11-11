@@ -1,6 +1,6 @@
 # Using ApeTek
 
-Current release: **ApeTek 1.3.3**, distributed as `apetek_1.3.3_amd64.deb` or `apetek-1.3.3-linux-x64.tar.gz`.
+Current release: **ApeTek 1.3.4**, distributed as `apetek_1.3.4_amd64.deb` or `apetek-1.3.4-linux-x64.tar.gz`.
 
 ## Write and preview
 

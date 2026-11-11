@@ -1,38 +1,42 @@
 # ApeTek branding
 
-ApeTek uses a geometric chimpanzee emblem inspired by the faceted purple,
-magenta, orange and peach style of the user's installed OwlDocs logo.
+ApeTek uses a geometric chimpanzee emblem with cobalt and navy outer facets,
+emerald and teal accents, and a pale mint face. The faceted style was originally
+inspired by the user's installed OwlDocs logo. Version 1.3.4 replaces the former
+purple, magenta, orange and peach palette with blue and green.
 
-`assets/apetek-logo.png` is the original transparent 1254 × 1254 PNG.
+`assets/apetek-logo.png` is the transparent 1254 × 1254 PNG.
 `assets/icon.png` is the same artwork resized with transparent padding to
 512 × 512 for the Linux desktop and native window icon. The React header
 bundles the original artwork locally. No runtime image download is needed.
 
-The emblem was made using the built-in `image_gen` tool, not the CLI/API
-fallback. OwlDocs was provided as a style reference; the requested subject
-is a chimpanzee. The app name is typeset separately in the UI.
+The original emblem and its palette edit were made using the built-in
+`image_gen` tool. The blue/green edit uses the existing chimp as its target,
+preserving its silhouette, expression and geometric style. The 512-pixel
+derivative is resized on a transparent canvas with the existing icon's occupied
+bounds as its sizing reference. Both images retain actual alpha transparency.
+The app name is typeset separately in the UI. The original palette remains in
+Git history.
 
-## Final generation prompt
+## Final palette-edit prompt
 
-Use case: logo-brand. Create a new desktop app icon for ApeTek. The provided
-owl image is a STYLE REFERENCE ONLY: reuse its elegant low-poly geometric
-facets and rich palette of deep aubergine purple, magenta, hot coral orange,
-warm amber and peach. Change the subject completely to a CHIMPANZEE face.
-Chimpanzee, not an owl, monkey with tail, gorilla or human. Strong readable
-chimp silhouette with prominent rounded ears, domed forehead, expressive
-dark eyes with small cream highlights, clear brow, wide flat nose and
-distinctive pale projecting muzzle. Friendly, clever, calm expression,
-closed mouth. A single front-facing symmetric chimp head, no body, no
-hands, no accessories, no text. Clean faceted polygon art, crisp hard-edged
-triangles, premium vivid geometric emblem similar in visual weight and
-finish to the owl reference. Purple outer face/ears, orange and magenta
-facets, warm peach muzzle and eye sockets, deep purple nose and eyes.
-Balance clear recognizable chimp anatomy with geometric simplification.
-Centered square composition, fill roughly 88 percent of canvas with
-generous even transparent margin. Deliver the chimp emblem alone on a
-truly TRANSPARENT background; no backing square, no white or black
-background, no shadow, no border, no mockup, no typography, no owl ear
-tufts or beak.
+Use case: precise-object-edit. Asset type: ApeTek desktop application logo,
+transparent PNG. Image 1 is the EDIT TARGET, the existing faceted geometric
+chimpanzee emblem. Recolor this exact chimp into a beautiful cohesive BLUE AND
+GREEN palette. Use rich cobalt and royal blue with deep navy for the outer
+forehead, cheeks and outer head facets; emerald and teal facets for the ears,
+brow and face accents; pale mint and softly luminous sea-green for the muzzle
+and face highlights. Keep dark navy eyes, nostrils and mouth with tiny pale
+cream or mint eye highlights. Make the tonal contrast crisp enough to read as
+a small desktop icon. Remove the original purple, magenta, orange and peach
+color scheme. This is a PALETTE EDIT ONLY: preserve the exact chimp identity,
+friendly calm expression, closed smiling mouth, rounded ears, front-facing
+symmetry, proportions, silhouette, every polygon facet boundary, geometry,
+crop and composition. Keep the existing low-poly triangle style and hard
+sharp edges. Do not redesign or add facets, fur, textures, objects, text,
+borders, shadows or a backing tile. Preserve a genuinely transparent background
+and transparent margins. Deliver just the single recolored chimp emblem on
+alpha transparency.
 
 ## Upgrade compatibility
 

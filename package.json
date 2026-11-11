@@ -1,6 +1,6 @@
 {
   "name": "apetek",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "private": true,
   "description": "Offline Markdown editor with portable equation images",
   "author": "ApeTek contributors",
