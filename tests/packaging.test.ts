@@ -29,12 +29,12 @@ test('Linux packages identify ApeTek and replace the previous installed applicat
 
     const { stdout } = await run(process.execPath, [path.join(fixture, 'scripts/package.mjs')], { timeout: 20_000 });
     const artifacts = JSON.parse(stdout.slice(stdout.indexOf('{'))) as { portable: string; tarball: string; debianPackage: string };
-    assert.equal(path.basename(artifacts.tarball), 'apetek-1.3.6-linux-x64.tar.gz');
-    assert.equal(path.basename(artifacts.debianPackage), 'apetek_1.3.6_amd64.deb');
+    assert.equal(path.basename(artifacts.tarball), 'apetek-1.3.7-linux-x64.tar.gz');
+    assert.equal(path.basename(artifacts.debianPackage), 'apetek_1.3.7_amd64.deb');
     const app = JSON.parse(await readFile(path.join(artifacts.portable, 'resources/app/package.json'), 'utf8'));
     assert.equal(app.name, 'apetek');
     assert.equal(app.productName, 'ApeTek');
-    assert.equal(app.version, '1.3.6');
+    assert.equal(app.version, '1.3.7');
     assert.deepEqual(await readFile(path.join(artifacts.portable, 'icon.png')), png);
     assert.deepEqual(await readFile(path.join(artifacts.portable, 'resources/app/assets/icon.png')), png);
     const { stdout: defaultArguments } = await run(path.join(artifacts.portable, 'apetek'), ['notes.md'], { env: { ...process.env, DISPLAY: ':99' } });
@@ -44,7 +44,7 @@ test('Linux packages identify ApeTek and replace the previous installed applicat
 
     const { stdout: control } = await run('dpkg-deb', ['--field', artifacts.debianPackage]);
     assert.match(control, /^Package: apetek$/m);
-    assert.match(control, /^Version: 1\.3\.6$/m);
+    assert.match(control, /^Version: 1\.3\.7$/m);
     assert.match(control, /^Replaces: markdown-local$/m);
     assert.match(control, /^Conflicts: markdown-local$/m);
     const { stdout: contents } = await run('dpkg-deb', ['--contents', artifacts.debianPackage]);
@@ -58,8 +58,8 @@ test('Linux packages identify ApeTek and replace the previous installed applicat
     assert.match(desktop, /^Exec=apetek %F$/m);
     assert.match(desktop, /^Icon=apetek$/m);
     const { stdout: archive } = await run('tar', ['-tzf', artifacts.tarball]);
-    assert.match(archive, /apetek-1\.3\.6-linux-x64\/apetek-bin\n/);
-    assert.match(archive, /apetek-1\.3\.6-linux-x64\/resources\/app\/THIRD_PARTY_NOTICES\.txt\n/);
+    assert.match(archive, /apetek-1\.3\.7-linux-x64\/apetek-bin\n/);
+    assert.match(archive, /apetek-1\.3\.7-linux-x64\/resources\/app\/THIRD_PARTY_NOTICES\.txt\n/);
   } finally {
     await rm(fixture, { recursive: true, force: true });
   }
