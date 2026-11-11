@@ -1,10 +1,10 @@
 # ApeTek branding
 
 ApeTek uses a geometric chimpanzee emblem with cobalt and navy fur and emerald
-and teal fur highlights. The face, muzzle and inner ears retain their original
-warm peach, apricot, cream and coral skin colors. The faceted style was originally
-inspired by the user's installed OwlDocs logo. Version 1.3.5 restores the warm
-skin tones while keeping blue and green on the fur.
+and teal fur highlights. The face, muzzle and inner ears retain warm peach,
+apricot, cream and coral skin tones. Version 1.3.6 softens the orange skin around
+the eyes to muted peach and changes the nose from purple to blue. The faceted
+style was originally inspired by the user's installed OwlDocs logo.
 
 `assets/apetek-logo.png` is the transparent 1254 × 1254 PNG.
 `assets/icon.png` is the same artwork resized with transparent padding to
@@ -21,7 +21,7 @@ Git history.
 
 ## Final palette-edit prompt
 
-Use case: precise-object-edit. Asset: transparent geometric chimpanzee logo for ApeTek. Image 1 is the EDIT TARGET: the ORIGINAL chimp with WARM PEACH SKIN. Image 2 is only a reference for BLUE/GREEN FUR colors; its green face is explicitly WRONG and must NOT be copied. Make one restrained palette correction to Image 1: recolor ONLY its purple/magenta FUR on the crown, temples and outer cheek/head facets into cobalt blue and deep navy, with tasteful emerald/teal highlights ONLY in the fur. PRESERVE THE ORIGINAL WARM NATURAL SKIN COLORS from Image 1 exactly: peach, apricot, warm cream and soft coral on the muzzle, chin, cheeks around the eyes, forehead/brow skin band and inner ears. The entire projecting muzzle must remain warm peach, NOT green or mint. Ear skin must remain warm peach/apricot, NOT green. Facial skin around the eyes must remain warm peach/apricot, NOT blue or green. Keep natural dark navy/charcoal eyes, nostrils and mouth, and cream eye highlights. This is a chimp, not an alien. Maintain every original polygon boundary, shape, recognizable chimp anatomy, front-facing symmetry, friendly calm expression, closed smiling mouth, large rounded ears, proportions, silhouette, crop and transparent margins of Image 1. Keep clean crisp low-poly facets, no added texture, no new details, no redesign, no text, no background tile, no border, no shadow. Deliver the single original-style chimp emblem on genuine alpha transparency. Blue and green belong ONLY on the fur and fur highlights; all exposed skin stays its original warm peach color.
+Use case: precise-object-edit. Make a very small, precise palette correction to this existing transparent ApeTek geometric chimp logo. Preserve ALL polygon boundaries, shapes, expression, symmetry, silhouette, proportions, crop, transparent margins, and existing cobalt/navy/emerald/teal FUR exactly. Only two color changes: (1) The bright saturated orange/yellow skin facets immediately surrounding both eyes should become understated soft warm PEACH, muted APRICOT, and warm CREAM. Reduce their orange saturation substantially so the eye areas harmonize naturally with the pale peach muzzle and brow skin. No vivid orange or yellow eye rings. Keep all eye shapes, dark pupils, cream glints, eyebrow contours and facial geometry exactly unchanged. Preserve natural warm peach/coral skin elsewhere on the face and inner ears. (2) Recolor the currently PURPLE/PLUM nose into a clear deep COBALT BLUE nose with NAVY BLUE nostrils and a softly lighter BLUE central highlight. Remove every purple/magenta tone from the nose; its shapes and facets must remain exactly the same. Blue nose, soft natural peach eye skin, unchanged blue-green fur. Do NOT redesign, do NOT add details, do NOT change the overall face colors to blue/green, no texture, no text, no background tile, no border, no shadow. Output the same single crisp faceted chimp emblem on genuine alpha transparency.
 
 ## Upgrade compatibility
 
