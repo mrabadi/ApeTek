@@ -30,6 +30,8 @@ import { visit } from 'unist-util-visit';
 import type { AssetRequest, RenderedDocument, RenderOptions } from '../shared/types.js';
 
 const blockTags = new Set(['p', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'blockquote', 'li', 'tr']);
+// Match the preview's typography; relative sizes also survive rich copy and PDF.
+const headingScales: Record<string, number> = { h1: 32 / 15, h2: 21 / 15, h3: 18 / 15, h4: 1, h5: .83, h6: .67 };
 const anchorTags = new Set([...blockTags, 'table', 'hr', 'section', 'details', 'img', 'figure', 'dl', 'dt', 'dd']);
 const imageData = /^data:image\/(?:png|jpeg|gif|webp);base64,[a-zA-Z0-9+/]+={0,2}$/;
 const tokenColors: Record<string, string> = {
@@ -156,11 +158,20 @@ export async function renderMarkdown(source: string, options: RenderOptions): Pr
     });
   const tree = await processor.run(processor.parse(source));
   checkAbort();
-  const images: Element[] = [];
-  visit(tree, 'element', (node) => { if (node.tagName === 'img') images.push(node); });
-  for (const node of images) {
+  const images: { node: Element; scale: number }[] = [];
+  const inheritedScales = new WeakMap<Element, number>();
+  visit(tree, 'element', (node, _index, parent) => {
+    const headingScale = headingScales[node.tagName];
+    const scale = headingScale ?? (parent?.type === 'element' ? inheritedScales.get(parent) : undefined) ?? 1;
+    inheritedScales.set(node, scale);
+    if (headingScale !== undefined) node.properties.style = `font-size:${headingScale}em;`;
+    if (node.tagName === 'img') images.push({ node, scale });
+  });
+  for (const { node, scale } of images) {
     checkAbort();
-    const request = assets.get(node.position?.start.offset);
+    const original = assets.get(node.position?.start.offset);
+    const request = original?.kind === 'math' && scale !== 1
+      ? { ...original, fontSize: mathFontSize * scale } : original;
     if (!request) {
       const source = String(node.properties.src ?? '');
       let embedded: string | null = imageData.test(source) ? source : null;

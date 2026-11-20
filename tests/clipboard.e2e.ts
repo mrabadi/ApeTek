@@ -330,7 +330,7 @@ test('default and selected prose spacing survive full and partial copy without d
       }
       assert.equal(result.full.prose.length, 5);
       assert.equal(result.selected.prose.length, 1);
-      assert.equal(result.full.heading, '18pt');
+      assert.equal(result.full.heading, '16.8pt');
       assert.equal(result.full.code, '10pt');
       assert.equal(result.selectedText, 'Selected');
       assert.equal(result.previewUnchanged, true);

@@ -238,6 +238,44 @@ test('global math scale reaches inline and display raster requests with safe bou
   }
 });
 
+test('heading equations scale with all six heading levels and global math size through nested content', async () => {
+  const source = [
+    'Body $x$.',
+    '# First **$x$**',
+    '## Second [$x$](https://example.com)',
+    '### Third $x$',
+    '#### Fourth $x$',
+    '##### Fifth $x$',
+    '###### Sixth $x$',
+    'Setext $x$\n===',
+    '<div>\n\n## Wrapped $x$\n\n</div>',
+    '$$\nx\n$$',
+    '```mermaid\nflowchart LR\nA --> B\n```',
+  ].join('\n\n');
+  const ratios = [1, 32 / 15, 21 / 15, 18 / 15, 1, .83, .67, 32 / 15, 21 / 15, 1];
+  for (const scale of [100, 137, 200]) {
+    const requests: AssetRequest[] = [];
+    const rendered = await renderMarkdown(source, {
+      mathScale: scale,
+      renderAsset: async (request) => { requests.push(request); return image; },
+    });
+    const math = requests.filter((request) => request.kind === 'math');
+    assert.equal(math.length, ratios.length);
+    math.forEach((request, index) => {
+      assert.ok(Math.abs(request.fontSize! - 12.75 * scale / 100 * ratios[index]) < 1e-8,
+        `math ${index} uses its heading's text scale at ${scale}%`);
+      assert.equal(request.source, 'x');
+      assert.equal(request.display, index === math.length - 1);
+    });
+    assert.deepEqual(requests.at(-1), { kind: 'mermaid', source: 'flowchart LR\nA --> B' });
+    for (const [index, ratio] of ratios.slice(1, 7).entries()) {
+      assert.match(rendered.html, new RegExp(`<h${index + 1}[^>]*style="font-size:${ratio}em;"`));
+    }
+    assert.match(rendered.html, /<strong><img/);
+    assert.match(rendered.html, /<a href="https:\/\/example.com"><img/);
+  }
+});
+
 test('prose spacing is single by default and configurable without changing heading or code typography', async () => {
   const source = '# Heading\n\nFirst line\nwrapped.\n\nSecond paragraph.\n\n- List item\n\n| Column |\n| --- |\n| Cell |\n\n```javascript\nconst value = 1;\n```\n\n<p style="line-height:9;margin:99px">Raw paragraph</p>';
   for (const [settings, lineHeight, paragraphGap] of [
@@ -256,7 +294,8 @@ test('prose spacing is single by default and configurable without changing headi
       assert.ok(attributes.includes(`line-height:${lineHeight};`), `${tag} has configured line height`);
       if (tag === 'p') assert.ok(attributes.includes(`margin:0 0 ${paragraphGap}px;`), 'paragraph has one after-gap');
     }
-    assert.doesNotMatch(rendered.html, /<(?:h1|pre|code)[^>]*style=/);
+    assert.match(rendered.html, /<h1[^>]*style="font-size:2\.1333333333333333em;"/);
+    assert.doesNotMatch(rendered.html, /<(?:pre|code)[^>]*style=/);
     assert.doesNotMatch(rendered.html, /line-height:9|margin:99px/);
     assert.match(rendered.plainText, /First line\nwrapped\./);
   }
@@ -334,7 +373,8 @@ test('bullet gap is bounded and independent of wrapped line and multi-paragraph 
       assert.ok(attributes.includes(`line-height:${content.startsWith('Outside') ? 1.5 : 1.25};margin:0 0 ${paragraphGap}px;`), content);
     }
     assert.match(rendered.html, /display:block;margin:1em 0;/);
-    assert.doesNotMatch(rendered.html, /<(?:h1|pre|code)[^>]*style=/);
+    assert.match(rendered.html, /<h1[^>]*style="font-size:2\.1333333333333333em;"/);
+    assert.doesNotMatch(rendered.html, /<(?:pre|code)[^>]*style=/);
   }
 });
 

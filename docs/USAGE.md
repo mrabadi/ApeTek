@@ -1,6 +1,6 @@
 # Using ApeTek
 
-Current release: **ApeTek 1.3.7**, distributed as `apetek_1.3.7_amd64.deb` or `apetek-1.3.7-linux-x64.tar.gz`.
+Current release: **ApeTek 1.3.8**, distributed as `apetek_1.3.8_amd64.deb` or `apetek-1.3.8-linux-x64.tar.gz`.
 
 ## Write and preview
 
@@ -23,6 +23,8 @@ $$
 The app renders the KaTeX-supported LaTeX math subset. It needs no TeX installation. Code fences and inline code keep dollar signs literal. An invalid equation or diagram shows its source and an error while the rest of the document remains available.
 
 ## Equation layout and size
+
+Equations inside headings (`#` through `######`, including Setext headings) automatically follow the heading's text size. This also works inside heading links and emphasis. The **LaTeX size** setting multiplies this proportional size, and copying and PDF export preserve the same heading-to-body proportions. No additional setting is needed.
 
 Display equation blocks align left by default. Open **Document settings** and choose **Display equation blocks → Center** to center each complete block. This positions the equation image; alignment within an `aligned` environment, matrix, or other TeX structure still follows its LaTeX source.
 

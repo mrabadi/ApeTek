@@ -8,12 +8,14 @@ PDF export defaults to Letter. **Document settings** offers left or centered dis
 
 The 100% math size now equals 75% in version 1.2. Saved size choices migrate to preserve their appearance within the new range.
 
+Equations in headings automatically scale with the surrounding heading text. This combines with the LaTeX size setting and applies to the preview, rich copy, and PDF export.
+
 ## Install and run
 
 For the Ubuntu package, run from the directory containing the download:
 
 ```sh
-sudo apt install ./apetek_1.3.7_amd64.deb
+sudo apt install ./apetek_1.3.8_amd64.deb
 apetek
 ```
 
@@ -24,8 +26,8 @@ Installing this package replaces the earlier Markdown Local package. Your Markdo
 For the portable archive:
 
 ```sh
-tar -xzf apetek-1.3.7-linux-x64.tar.gz
-cd apetek-1.3.7-linux-x64
+tar -xzf apetek-1.3.8-linux-x64.tar.gz
+cd apetek-1.3.8-linux-x64
 ./apetek
 ```
 

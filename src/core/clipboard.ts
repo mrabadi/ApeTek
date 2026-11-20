@@ -107,6 +107,8 @@ export function clipboardPayload(root: HTMLElement, range?: Range): { html: stri
       }
     }
     if (defaults[element.tagName]) {
+      const headingEm = /^H[1-6]$/.test(element.tagName) && element.style.fontSize.match(/^(\d*\.?\d+)em$/);
+      if (headingEm) element.style.fontSize = `${Number(headingEm[1]) * 12}pt`;
       const previousStyle = Array.from(element.style, (property) => ({
         property, value: element.style.getPropertyValue(property), priority: element.style.getPropertyPriority(property),
       }));
